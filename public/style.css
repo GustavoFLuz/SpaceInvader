@@ -244,6 +244,8 @@ body {
 
 #rankingList .listName {
     width: 40%;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 #rankingList canvas {
