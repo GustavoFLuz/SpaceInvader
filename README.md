@@ -9,6 +9,7 @@
 </div>
 
 <details>
+  <summary>Navegação</summary>
   <ol>
     <li>
       <a href="#sobre-o-projeto">Sobre o Projeto</a>
