@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="#" />
+
+  </head>
+
+  <body>
+    <div id="score">SCORE: <span>0</span></div>
+    <canvas id="gameScreen"></canvas>
+    <div id="menu" ><!-- style="display: none" -->
+    </div>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./scripts/models/Images.js"></script>
+    
+    <script src="./scripts/models/Canvas.js"></script>
+    <script src="./scripts/models/Game.js"></script>
+    
+    <script src="./scripts/models/Spaceship.js"></script>
+    <script src="./scripts/models/Projectiles.js"></script>
+    <script src="./scripts/models/Particle.js"></script>
+    <script src="./scripts/models/Invader.js"></script>
+    <script src="./scripts/models/InvaderGrid.js"></script>
+
+    <script src="./scripts/controllers/SpaceshipController.js"></script>
+    <script src="./scripts/controllers/ProjectilesController.js"></script>
+    <script src="./scripts/controllers/ParticlesController.js"></script>
+
+    <script src="./scripts/api/api.js"></script>
+    <script src="./scripts/helper/preload.js"></script>
+    <script src="./scripts/menu/Menu.js"></script>
+    <script src="./scripts/Main.js"></script>
+  </body>
+
+</html>
