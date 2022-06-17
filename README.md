@@ -34,9 +34,6 @@ Projeto desenvolvido para a disciplina de Banco de Dados II, no estilo do cláss
 
 <h2 id='instalacao'>Instalação</h2>
 
-<p >This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.</p>
-
 ### Pré-requisitos
 
 Primeiro passo é obter a versão mais recente do npm
