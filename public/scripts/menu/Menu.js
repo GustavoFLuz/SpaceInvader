@@ -72,7 +72,7 @@ class Menu {
     })
   }
   renderListItem(score, index) {
-    const deleteButton = true;
+    const deleteButton = false;
     const html = `
     <li>
       <div style='display:none'>${score._id}</div>
