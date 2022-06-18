@@ -7,6 +7,7 @@ class Menu {
   }
   renderMainMenu(gameEnded, score) {
     const html = `
+    <div id='info' onmouseenter='menu.renderInfo(event)' onmouseout='menu.removeInfo()'>i</div>
     ${gameEnded ? "<h2 id='gameover'>GAME OVER</h2>" : ''}
     ${gameEnded ? `<h2 id='finalScore'>${score} points</h2>` : ''}
     <h2 id='title'><span>Space</span><span>Invaders</span></h2>
@@ -17,7 +18,19 @@ class Menu {
     this.menuDiv.innerHTML = html;
     this.toggleMenu(true);
   }
-
+  renderInfo(event) {
+    const div = document.createElement('div');
+    div.id = 'info-box';
+    div.innerHTML = `
+    <p>Move: A/D or left/right arrows</p>
+    <p>Shoot: space bar</p>
+    <p>Try to get as many points as you can by defeating enemies, but take care with them shooting back</p>    
+    `;
+    document.querySelector('#menu').appendChild(div);
+  }
+  removeInfo(){
+    if(document.querySelector('#info-box'))document.querySelector('#info-box').remove();
+  }
   renderStartMenu() {
     const html = `      
     <div><canvas id="spaceshipCustom"></canvas></div>
@@ -46,7 +59,7 @@ class Menu {
   renderScore() {
     var scores;
     Api.getScores().then(data => scores = JSON.parse(data)).then(() => {
-      scores.sort((a,b)=>{return b.score - a.score});
+      scores.sort((a, b) => { return b.score - a.score });
       const html = `
       <div id="rankingHeader"><h4 id="ranking">RANKING</h2>
       <button id="back" onclick="menu.renderMainMenu()" >Back</button></div>
@@ -55,11 +68,11 @@ class Menu {
       </ul>`
       this.menuDiv.innerHTML = html;
       scores.map(async (score, index) => {
-        const c = document.querySelector('#listItem___'+index);
+        const c = document.querySelector('#listItem___' + index);
         const ctx = c.getContext("2d");
         c.width = spaceshipImage.width;
         c.height = spaceshipImage.height;
-        
+
         const image = await images.paint(spaceshipImage, score.color)
         ctx.drawImage(
           image,
@@ -67,7 +80,7 @@ class Menu {
           0,
           c.width,
           c.height
-      )
+        )
       })
     })
   }
@@ -76,11 +89,11 @@ class Menu {
     const html = `
     <li>
       <div style='display:none'>${score._id}</div>
-      <div class='rank'>${index+1}</div>
+      <div class='rank'>${index + 1}</div>
       <div><canvas id="listItem___${index}"></canvas></div>
       <div class="listName">${score.name}</div>
       <div class="listScore">${score.score}</div>
-      ${deleteButton?"<div><img class='delete' onclick='menu.deleteScore(this)' src='./assets/img/trash.svg'></img></div>":''} 
+      ${deleteButton ? "<div><img class='delete' onclick='menu.deleteScore(this)' src='./assets/img/trash.svg'></img></div>" : ''} 
     </li>
     `
     return html;
@@ -88,8 +101,8 @@ class Menu {
   deleteScore(event) {
     const id = event.parentNode.parentNode.querySelector('div:first-child').innerHTML;
     Api.deleteScore(id)
-      .then(()=>this.renderScore())
-      .catch((err)=>console.log('Error during Score deleting: '+err));
+      .then(() => this.renderScore())
+      .catch((err) => console.log('Error during Score deleting: ' + err));
 
   }
   changeColor(event) {
