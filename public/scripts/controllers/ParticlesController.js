@@ -5,7 +5,7 @@ class ParticlesControllers {
                 particle.position.x < -1 ||
                 particle.position.x > canvas.width ||
                 particle.position.y < -1 ||
-                particle.position.y > canvas.heigth) {
+                particle.position.y > canvas.height) {
                 particles.splice(index, 1)
                 return;
             }
